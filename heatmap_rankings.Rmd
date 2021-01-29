@@ -30,7 +30,6 @@ rank_data <- rank_data %>%
 
 
 ```{r plot_heatmap}
-?pheatmap
 
 pheatmap(rank_data, filename = here("heatmap_defaults.pdf"), cellwidth = 50, cellheight = 10, angle_col = "45")
 
