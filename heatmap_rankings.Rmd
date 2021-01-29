@@ -1,0 +1,40 @@
+---
+title: "LoTR Clustering"
+author: "Jessica Scarborough"
+date: "1/29/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(pheatmap)
+library(here)
+library(tidyverse)
+
+```
+
+This is the analysis for a very important question: Are there patterns in how individuals rank the LoTR book series?
+
+First, we will gather crucial data: individuals personal ranking of the six books from best to worst. Next, we will visualize with heatmaps clustered using any algorithm that makes it look interesting. 
+
+
+```{r data_summary}
+
+rank_data <- read.csv(here("Data", "rankings.csv")) 
+rank_data <- rank_data %>%
+  column_to_rownames("Name")
+
+```
+
+
+
+```{r plot_heatmap}
+?pheatmap
+
+pheatmap(rank_data, filename = here("heatmap_defaults.pdf"), cellwidth = 50, cellheight = 10, angle_col = "45")
+
+```
+
+
+
